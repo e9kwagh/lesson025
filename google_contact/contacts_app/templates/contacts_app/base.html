@@ -2,53 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <style>
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body> 
     <nav class="navbar bg-body-tertiary fixed-top">
         <div class="container-fluid">
             <div class="d-flex justify-content-between align-items-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <button class="btn snavbar-toggler me-3 btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon" style="font-size: 0.8rem;"></span>
                 </button>
-                <a class="navbar-brand ms-3" href="#">Contact book</a>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <div class="ms-1"> 
+                    <a class="text-lg-end text-light-emphasis navbar-brand fs-4 fw-semibold" href="#">Contact book</a>
+                </div>
+                <div class="d-flex flex-column flex-sm-row align-items-center ms-5">
+                    <form class="d-flex" role="search" style="width: 100%;">
+                        <input class="form-control form-control-sm mb-2 mb-sm-0 ms-3" type="search" placeholder="Search" aria-label="Search" style="width: 100%">
+                        <button class="btn btn-primary btn-sm ms-2" type="submit">Search</button>
+                    </form>
+                </div>
+                
             </div>
-          
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 300px;"> 
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="btn btn-primary rounded" href="" style="background-color: #cce5ff; border-color: #cce5ff; color: #000;">
-                                Create New Contact
-                            </a>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <a class="btn btn-primary btn-sm rounded " href="" style="background-color: #cce5ff; border-color: #cce5ff; color: #000;">
-                                All Contacts
-                            </a>
-                        </li>
-                        <li class="nav-item mt-3">
-                            <a class="btn btn-primary btn-sm rounded " href="" style="background-color: #cce5ff; border-color: #cce5ff; color: #000;">
-                                Frequently Used
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+        </div>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 250px;"> 
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Contact Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body mt-0">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                       <a class="btn btn-primary rounded-4 py-2 px-3 " href="{% url 'create_contact' %}" style="background-color: #cce5ff; border-color: #cce5ff; color: #000;  ">
+                                    <i class="fas me-4 fa-plus"></i> Create Contact
+                                </a>
+                            </li>
+                                     
+                    
+                     <li class="nav-item mt-3">
+                        <a class="btn btn-primary btn-sm rounded-5 d-flex justify-content-between align-items-center" href="{% url 'home' %}" style="background-color: #cce5ff; border-color: #cce5ff; color: #000; width: 200px;">
+                            <span><i class="fas fa-user "></i></span>
+                            <span class="mx-auto"> My Contacts</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-3">
+                        <a class="btn btn-primary btn-sm rounded-5 d-flex justify-content-between align-items-center" href="" style="background-color: #cce5ff; border-color: #cce5ff; color: #000; width: 200px;">
+                            <span><i class="fas fa-star"></i></span>
+                            <span class="mx-auto">Frequently Used</span>
+                        </a>
+                    </li>
+                    
+                    <hr>
+
+                     
+                    <li class="nav-item mt-3">
+                        <a class="btn btn-primary btn-sm rounded-5 d-flex justify-content-between align-items-center" href="" style="background-color: #cce5ff; border-color: #cce5ff; color: #000; width: 200px;">
+                            <span><i class="fas fa-file-export me-2"></i></span>
+                            <span class="mx-auto">export</span>
+                        </a>
+                    </li>
+                    
+                </ul>
             </div>
         </div>
     </nav>
     
-    <div class="container mt-5  pt-2">
+    <div class="container mt-5 pt-2">
         {% block content %}
         {% endblock %}
     </div>

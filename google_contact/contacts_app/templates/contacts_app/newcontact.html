@@ -1,0 +1,71 @@
+{% extends 'contacts_app/base.html' %}
+
+{% block title %}
+    Create New Contact
+{% endblock title %}
+
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+    <form action="" method="post" class="w-50">
+        {% csrf_token %}
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="firstname" class="form-label me-3">
+                <i class="fas fa-user"></i> First Name
+            </label>
+            {{ form.firstname }}
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="lastname" class="form-label me-3">
+                <i class="fas fa-user"></i> Last Name
+            </label>
+            {{ form.lastname }}
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="email" class="form-label me-3">
+                <i class="fas fa-envelope"></i> Email
+            </label>
+            {{ form.email }}
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="address" class="form-label me-3">
+                <i class="fas fa-map-marker-alt"></i> Address
+            </label>
+            {{ form.address }}
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="phoneNumber" class="form-label me-3">
+                <i class="fas fa-phone"></i> Phone Number
+            </label>
+            {{ form.phoneNumber }}
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="linkedin" class="form-label me-3">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </label>
+            {{ form.linkedin }}
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="facebook" class="form-label me-3">
+                <i class="fab fa-facebook"></i> Facebook
+            </label>
+            {{ form.facebook }}
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+            <label for="twitter" class="form-label me-3">
+                <i class="fab fa-twitter"></i> Twitter
+            </label>
+            {{ form.twitter }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock content %}

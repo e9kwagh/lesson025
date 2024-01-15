@@ -1,9 +1,42 @@
+
 {% extends 'contacts_app/base.html' %}
+
 {% block title %}
-    home
-{% endblock title %}
+    Home
+{% endblock  %}
 
 {% block content %}
-    
-<h1>hihtis is m=ghoen</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Your Contacts</h1>
+
+    {% if user_contacts %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">LinkedIn</th>
+                    <th scope="col">Facebook</th>
+                    <th scope="col">Twitter</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in user_contacts %}
+                    <tr>
+                        <td>{{ contact.firstname }} {{ contact.lastname }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>{{ contact.phoneNumber }}</td>
+                        <td>{{ contact.linkedin }}</td>
+                        <td>{{ contact.facebook }}</td>
+                        <td>{{ contact.twitter }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No contacts available.</p>
+    {% endif %}
+</div>
 {% endblock content %}
+
