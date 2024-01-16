@@ -10,6 +10,16 @@ class SignupageForm(UserCreationForm):
         fields = ["username", "email", "password1", "password2"]
 
 
+
+
+class UpdateForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = "__all__"
+        exclude = ["user"]
+
+
+
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Account

@@ -1,16 +1,38 @@
-
 {% extends 'contacts_app/base.html' %}
 
 {% block title %}
     Home
-{% endblock  %}
+{% endblock %}
+
+
+{% block head %}
+<style>
+    .no-contacts-container {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .create-contact-btn {
+        padding: 15px 30px;
+        font-size: 18px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .create-contact-btn:hover {
+        background-color: #218838;
+    }
+</style>
+
+{% endblock head %}
 
 {% block content %}
-<div class="container mt-5">
-    <h1 class="mb-4">Your Contacts</h1>
-
     {% if user_contacts %}
-        <table class="table table-striped">
+        <table class="table table-striped table-hover mt-4">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -19,6 +41,7 @@
                     <th scope="col">LinkedIn</th>
                     <th scope="col">Facebook</th>
                     <th scope="col">Twitter</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,13 +53,44 @@
                         <td>{{ contact.linkedin }}</td>
                         <td>{{ contact.facebook }}</td>
                         <td>{{ contact.twitter }}</td>
+                        <td>
+                            <a href="{% url 'edit_contact' contact.id %}" class="btn btn-warning mr-2" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                           
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{ contact.id }}">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                    
+                            <div class="modal fade" id="exampleModal{{ contact.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Deletion</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete {{ contact.firstname }} {{ contact.lastname }}?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <form method="post" action="{% url 'delete_contact' contact.id %}">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-primary">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p>No contacts available.</p>
+        <div class="no-contacts-container">
+            <p>No contacts available.</p>
+            <button class="create-contact-btn" onclick="location.href='{% url 'create_contact' %}'">Create Contact</button>
+        </div>
     {% endif %}
-</div>
 {% endblock content %}
-
