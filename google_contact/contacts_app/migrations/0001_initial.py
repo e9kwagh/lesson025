@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,20 +14,34 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Account',
+            name="Account",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('firstname', models.CharField(max_length=15)),
-                ('lastname', models.CharField(blank=True, max_length=15)),
-                ('email', models.EmailField(blank=True, max_length=15)),
-                ('address', models.CharField(blank=True, max_length=100)),
-                ('phoneNumber', models.CharField(max_length=10)),
-                ('linkedin', models.CharField(blank=True, max_length=50)),
-                ('facebook', models.CharField(blank=True, max_length=50)),
-                ('twitter', models.CharField(blank=True, max_length=50)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("updated", models.DateTimeField(auto_now=True)),
+                ("created", models.DateTimeField(auto_now_add=True)),
+                ("firstname", models.CharField(max_length=15)),
+                ("lastname", models.CharField(blank=True, max_length=15)),
+                ("email", models.EmailField(blank=True, max_length=15)),
+                ("address", models.CharField(blank=True, max_length=100)),
+                ("phoneNumber", models.CharField(max_length=10)),
+                ("linkedin", models.CharField(blank=True, max_length=50)),
+                ("facebook", models.CharField(blank=True, max_length=50)),
+                ("twitter", models.CharField(blank=True, max_length=50)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

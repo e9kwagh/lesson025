@@ -8,14 +8,13 @@ class Account(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     firstname = models.CharField(max_length=15)
-    lastname = models.CharField(max_length=15,  blank=True)
-    email = models.EmailField(max_length=50,  blank=True)
-    address = models.CharField(max_length=100,blank=True)
+    lastname = models.CharField(max_length=15, blank=True)
+    email = models.EmailField(max_length=50, blank=True)
+    address = models.CharField(max_length=100, blank=True)
     phoneNumber = models.CharField(max_length=10)
-    linkedin = models.CharField(max_length=50,  blank=True)
-    facebook = models.CharField(max_length=50,  blank=True)
-    twitter = models.CharField(max_length=50,  blank=True)
-
+    linkedin = models.CharField(max_length=50, blank=True)
+    facebook = models.CharField(max_length=50, blank=True)
+    twitter = models.CharField(max_length=50, blank=True)
 
     # class Meta:
     #     ordering = ["updated", "created"]
